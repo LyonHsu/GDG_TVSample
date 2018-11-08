@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">BrowseFragment_MyApp</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world" tools:ignore="ExtraTranslation">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="string_help_text">app需要獲取裝置名稱，缺少管理裝置必要權限，將無法使用。 \n\n請點擊\"設定\"-\"權限\"-打開\"app\"所需權限。 \n\n最後點擊兩次後退按鈕，即可返回。</string>
+    <string name="quit">退出</string>
+    <string name="settings">設定</string>
+    <string name="help">幫助</string>
+
+
+    <string name="API_SYSTEM_FAIL_TEXT">目前網路連線不穩定，請稍後再試。</string>
+
+
+    <string name="upcoming_movie">即將上映</string>
+    <string name="watch_the_trailer">觀看預告片</string>
+    <string name="watch_the_full_video">觀看完整影片</string>
+
+    <string name="search_tag_video">集數列表</string>
+    <string name="channel_list2">頻道</string>
+
+
+    <string name="action_buy">購買 </string>
+    <string name="action_rent">租借 </string>
+    <string name="action_wishlist">預約</string>
+    <string name="action_related">相關</string>
+    <string name="header_related">相關推薦項目</string>
+    <string name="header_recommended">相關推薦</string>
+
+    <string name="collect">收藏</string>
+    <string name="book">預約</string>
+    <string name="booked">"已預約"</string>
+    <string name="collected">"已收藏"</string>
+
+    <string name="want">收藏</string>
+    <string name="speed">倍數</string>
+    <string name="subtitle">字幕</string>
+    <string name="profile">畫質</string>
+
+</resources>

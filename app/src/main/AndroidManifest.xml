@@ -1,0 +1,105 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="sample.lyon.tv.myapplication">
+
+    <!--忽略android.support.media.tv 最低版本為21的方法-->
+    <uses-sdk tools:overrideLibrary="android.support.media.tv"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- RECORD_AUDIO is required to use the search functionality -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+
+    <uses-permission android:name="com.instudio.user_info.PERMISSION.READ"/>
+
+    <!--android tv searchProvider ContentProvider need -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>\
+    <!--BootupActivity-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!--Android Oreo-->
+    <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" />
+    <uses-permission android:name="com.android.providers.tv.permission.WRITE_EPG_DATA" />
+
+    <!-- TV app need to declare touchscreen not required -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@drawable/banner"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity android:name=".ListView.ListRowActivity"/>
+        <activity android:name=".RowList.CustomRowsActivity"/>
+        <activity android:name=".GridView.GridViewActivity"/>
+        <activity android:name=".Search.SearchActivity"/>
+        <activity
+            android:name=".Permissions.PermissionsActivity"
+            android:screenOrientation="sensorLandscape"
+            />
+        <activity android:name=".Detial.DetailsActivity"
+            android:icon="@drawable/app_icon_your_company"
+            android:label="@string/app_name"
+            android:logo="@drawable/app_icon_your_company">
+        </activity>
+        <activity android:name=".Player.PlayActivity"/>
+        <activity android:name=".Player.PlayActivity2"/>
+        <provider
+            android:name=".Search.SearchProvider"
+            android:readPermission="android.permission.GLOBAL_SEARCH"
+            android:exported="true"
+            android:authorities="com.browset.fragment">
+            <path-permission
+                android:readPermission="android.permission.GLOBAL_SEARCH" />
+        </provider>
+        <receiver
+            android:name=".Recommendation.BootupActivity"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".Recommendation.UpdateRecommendationsService"
+            android:enabled="true" />
+        <!--android Oreo Channels on the home screen-->
+        <receiver
+            android:name=".RecommendationOreo.InitializeChannelsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.media.tv.action.INITIALIZE_PROGRAMS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

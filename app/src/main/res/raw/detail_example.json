@@ -1,0 +1,109 @@
+{
+  "title": "Android TV Develope",
+  "description": "Build apps that let users experience your app's emersive content on the big screen. Users can discover your content recommendations on the home screen, and the leanback library provides APIs to help you build a great use experience for a remote control.",
+  "year": 2013,
+  "text": "If you've got an Android app or game, Android TV can bring it to your users in their living room. Android TV apps use the same architecture as those for phones and tablets. This approach means you can build new TV apps based on what you already know about building apps for Android, or extend your existing apps to also run on TV devices.To get started, read Get started with TV apps.If you prefer to learn through interactive video training, check out the Android TV and Google Cast Development course on Udacity (trailer embedded here), and other video courses below.",
+  "localImageResource": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Android_robot_2014.svg/1200px-Android_robot_2014.svg.png",
+  "backageImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnjJ9sPnbIxxUe6ZSWHggrohs4WrK7b9Q7oFQNJ0omw0Hgu1FQ",
+  "price": "",
+  "trailerUrl": "https://storage.googleapis.com/android-tv/Sample videos/Google+/Google+_ Sharing but like real life.mp4",
+  "videoUrl": "https://storage.googleapis.com/android-tv/Sample videos/April Fool's 2013/Explore Treasure Mode with Google Maps.mp4",
+  "characters": [
+    {
+      "type": "CHARACTER",
+      "title": "Leonardo Di Caprio",
+      "localImageResource": "face_01"
+    },
+    {
+      "type": "CHARACTER",
+      "title": "Gerald Butler",
+      "localImageResource": "face_08"
+    },
+    {
+      "type": "CHARACTER",
+      "title": "Russle Crow",
+      "localImageResource": "face_02"
+    },
+    {
+      "type": "CHARACTER",
+      "title": "Emma Stone",
+      "localImageResource": "face_03"
+    },
+    {
+      "type": "CHARACTER",
+      "title": "Natalie Portman",
+      "localImageResource": "face_04"
+    },
+    {
+      "type": "CHARACTER",
+      "title": "Jack Gyllanhall",
+      "localImageResource": "face_05"
+    },
+    {
+      "type": "CHARACTER",
+      "title": "Ryan Gossling",
+      "localImageResource": "face_06"
+    },
+    {
+      "type": "CHARACTER",
+      "title": "Olivia Wilde",
+      "localImageResource": "face_07"
+    }
+  ],
+  "recommended": [
+    {
+      "type": "MOVIE",
+      "title": "The Amazing Spuder-Man",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_01"
+    },
+    {
+      "type": "MOVIE",
+      "title": "American Psycho",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_02"
+    },
+    {
+      "type": "MOVIE",
+      "title": "Big Hero 6",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_03"
+    },
+    {
+      "type": "MOVIE",
+      "title": "Edge of Tomorrow",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_04"
+    },
+    {
+      "type": "MOVIE",
+      "title": "The Hobbit: The Desolation of Smaug",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_05"
+    },
+    {
+      "type": "MOVIE",
+      "title": "Interstellar",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_06"
+    },
+    {
+      "type": "MOVIE",
+      "title": "Jurassic Park",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_07"
+    },
+    {
+      "type": "MOVIE",
+      "title": "The Hunger Games: Mockingjay Part I",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_08"
+    },
+    {
+      "type": "MOVIE",
+      "title": "Planes",
+      "description": "$3.99",
+      "localImageResource": "card_image_movie_09"
+    }
+  ]
+}
