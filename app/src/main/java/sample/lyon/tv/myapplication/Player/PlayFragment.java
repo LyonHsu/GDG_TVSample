@@ -8,7 +8,9 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v17.leanback.app.PlaybackSupportFragment;
+import android.support.v17.leanback.app.RowsFragment;
 import android.support.v17.leanback.app.VideoFragment;
 import android.support.v17.leanback.app.VideoFragmentGlueHost;
 import android.support.v17.leanback.widget.AbstractDetailsDescriptionPresenter;
@@ -31,8 +33,12 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 import sample.lyon.tv.myapplication.Player.Action.BookAction;
 import sample.lyon.tv.myapplication.Player.Action.ProfileAction;
@@ -40,6 +46,7 @@ import sample.lyon.tv.myapplication.Player.Action.SpeedAction;
 import sample.lyon.tv.myapplication.Player.Action.SubtitleAction;
 import sample.lyon.tv.myapplication.Player.Action.WantAction;
 import sample.lyon.tv.myapplication.R;
+import sample.lyon.tv.myapplication.Tool.Utils;
 import sample.lyon.tv.myapplication.tvUI.GridItemPresenter;
 
 public class PlayFragment extends VideoFragment  {
@@ -68,12 +75,24 @@ public class PlayFragment extends VideoFragment  {
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
-        initializePlayer();
-    }
 
+
+    }
+    RowsFragment mRowsFragment;
     private void initializePlayer() {
+//        getView().setPadding(0,Utils.dpToPx(300, getActivity()),0,0);
+
         mRowsAdapter = initializeRelatedVideosRow();
         setAdapter(mRowsAdapter);
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        initializePlayer();
+//        setCustomPadding();
     }
 
     @SuppressLint("ResourceAsColor")
@@ -86,6 +105,12 @@ public class PlayFragment extends VideoFragment  {
                 Log.d("DescriptionRowPresenter","setText");
                 viewHolder.getSubtitle().setVisibility(View.GONE);
                 viewHolder.getBody().setVisibility(View.VISIBLE);
+                 }
+
+            @Override
+            public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item, List<Object> payloads) {
+                super.onBindViewHolder(viewHolder, item, payloads);
+
             }
         };
         if (false) {
@@ -103,6 +128,9 @@ public class PlayFragment extends VideoFragment  {
                         drawable = getActivity().getDrawable(R.drawable.progressbar_bg);
                     }
                     progressBar.setProgressDrawable(drawable);
+                    holder.view.setBackgroundColor(getActivity().getResources().getColor(android.R.color.transparent));
+                    holder.view.setPadding(Utils.dpToPx(0,getActivity()), Utils.dpToPx(300, getActivity()), Utils.dpToPx(0, getActivity()), 0);
+
                 }
             };
             playbackControlsRowPresenter.setOnActionClickedListener(OnActionClickedListener);
@@ -112,13 +140,18 @@ public class PlayFragment extends VideoFragment  {
             //控制選單
             presenterSelector.addClassPresenter(PlaybackControlsRow.class, playbackControlsRowPresenter);
         } else {
-
             PlaybackTransportRowPresenter presenter = new PlaybackTransportRowPresenter(){
                 @SuppressLint("RestrictedApi")
                 @Override
                 protected void onBindRowViewHolder(RowPresenter.ViewHolder holder, Object item) {
                     super.onBindRowViewHolder(holder, item);
                     SeekBar mProgressBar = (SeekBar) holder.view.findViewById(android.support.v17.leanback.R.id.playback_progress);
+                    LinearLayout controls_card = (LinearLayout) holder.view.findViewById(android.support.v17.leanback.R.id.controls_card);
+
+                    TextView title = new TextView(getActivity());
+                    title.setText("Lyon title");
+                    controls_card.addView(title);
+
                     mProgressBar.setProgressColor(Color.argb(255,255,0,200));
                 }
             };
@@ -126,6 +159,7 @@ public class PlayFragment extends VideoFragment  {
             //控制選單
             presenterSelector.addClassPresenter(PlaybackControlsRow.class, presenter);
         }
+
         ArrayObjectAdapter mRowsAdapter = new ArrayObjectAdapter(presenterSelector);
         addPlaybackControlsRow(mRowsAdapter);
         //預設推薦列表選擇頻道
@@ -228,6 +262,22 @@ public class PlayFragment extends VideoFragment  {
         ListRow listRow=new ListRow(header, listRowAdapter);
         mRowsAdapter.add(listRow);
         setOnItemViewClickedListener(new ItemViewClickedListener());
+         listRowAdapter = new ArrayObjectAdapter(new GridItemPresenter(getActivity()));
+        for(int i = 0;i<6;i++) {
+            listRowAdapter.add("Play recommend 2:"+i);
+        }
+         header = new HeaderItem(getString(R.string.header_recommended));
+         listRow=new ListRow(header, listRowAdapter);
+        mRowsAdapter.add(listRow);
+
+        listRowAdapter = new ArrayObjectAdapter(new GridItemPresenter(getActivity()));
+        for(int i = 0;i<6;i++) {
+            listRowAdapter.add("Play recommend 3:"+i);
+        }
+        header = new HeaderItem(getString(R.string.header_recommended));
+        listRow=new ListRow(header, listRowAdapter);
+        mRowsAdapter.add(listRow);
+        setOnItemViewClickedListener(new ItemViewClickedListener());
     }
 
     OnActionClickedListener OnActionClickedListener = new OnActionClickedListener(){
@@ -281,6 +331,21 @@ public class PlayFragment extends VideoFragment  {
             }
 
         }
+    }
+
+    private void setCustomPadding() {
+        //20171025 Lyon 便當加購方案
+//		getView().setPadding(Utils.dpToPx(-24,getActivity()), Utils.dpToPx(128, getActivity()), Utils.dpToPx(48, getActivity()), 0);
+        getView().setPadding(Utils.dpToPx(0,getActivity()), Utils.dpToPx(300, getActivity()), Utils.dpToPx(0, getActivity()), 0);
+        getView().setBackgroundColor(getActivity().getResources().getColor(android.R.color.transparent));
+    }
+
+    public boolean isVisibleed(){
+        return isControlsOverlayVisible();
+    }
+
+    public void isShow(boolean b){
+        hideControlsOverlay(b);
     }
 }
 

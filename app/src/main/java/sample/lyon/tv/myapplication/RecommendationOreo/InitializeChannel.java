@@ -185,6 +185,7 @@ public class InitializeChannel {
                 .setTitle(poster.chineseName)
                 .setDescription(poster.englishName)
                 .setType(TvContractCompat.PreviewPrograms.TYPE_MOVIE)
+                .setPosterArtAspectRatio(TvContractCompat.PreviewPrograms.ASPECT_RATIO_MOVIE_POSTER)//設置海報藝術長寬比
                 .setPosterArtUri(Uri.parse(poster.imageUrl))//節目畫面
                 .setPreviewVideoUri(previewPlayUri)//previewVideo
                 .setIntent(buildIPendingIntent(poster))
